@@ -1,3 +1,6 @@
+library(ggplot2)
+library(png)
+
 args <- commandArgs();
 if(length(args) != 9 || !file.exists(args[6])){
         write(paste("Rscript",unlist(strsplit(args[4],"="))[2],"<FI:type.pos.txt>","<FI:image>","<STR:target_type>","<STR:prefix>",sep=" "),stderr());
@@ -8,10 +11,6 @@ imageName <- args[7]
 target <- args[8]
 prefix <- args[9]
 
-#fileName <- "d.txt"; imageName <- "test.fill.png"; target <- "N"; prefix <- "test"
-#fileName 
-library(ggplot2)
-library(png)
 dat <- read.table(fileName,sep = "\t")
 msk <- readPNG(imageName)
 colorCutoff <- 10/255
@@ -53,8 +52,6 @@ write.table(dat,file=paste0(prefix,".sel.txt"),sep="\t",quote=F,row.names=F,col.
 
 
 center2center <- 500 ### nm
-
-#### modify site 1
 ratio <- 1e7
 
 
